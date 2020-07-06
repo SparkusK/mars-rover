@@ -7,7 +7,7 @@ RSpec.describe MarsRover::RoversCoordinator do
     MarsRover::MarsRover.new(position: { x: 10, y: 8 }, bearing: 'E'),
   ]}
   let(:map)         { MarsRover::Map.new(width: 10, length: 10) }
-  let(:coordinator) { described_class.new(rovers: rovers, map: map) }
+  let(:coordinator) { described_class.new(rovers: rovers, map: map, rover_instructions: {}) }
 
   it 'has a list of Rovers' do
     expect(coordinator.rovers).to eq(rovers)
@@ -23,6 +23,17 @@ RSpec.describe MarsRover::RoversCoordinator do
       "1 6 E\n" +
       "10 8 E"
     )
+  end
+
+  context 'when dealing with instructions' do
+    let(:rovers)             { [ MarsRover::MarsRover.new(position: { x: 2, y: 2}, bearing: 'N') ] }
+    let(:map)                { MarsRover::Map.new(width: 5, length: 5) }
+    let(:rover_instructions) { { rovers.first => 'MRM' } }
+    let(:coordinator)        { MarsRover::RoversCoordinator.new(rovers: rovers, map: map, rover_instructions: rover_instructions) }
+
+    it 'can apply a list of instructions to a list of rovers' do
+      expect { coordinator.apply_instructions }.to change{ coordinator.rover_positions }.from("2 2 N").to("3 3 E")
+    end
   end
 
   context 'when dealing with moving rovers' do

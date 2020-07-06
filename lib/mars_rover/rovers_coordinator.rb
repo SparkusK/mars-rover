@@ -1,15 +1,18 @@
 module MarsRover
   class RoversCoordinator
-    attr_accessor :rovers, :map
+    attr_accessor :rovers, :map, :rover_instructions
 
-    def initialize(rovers:, map:)
-      @rovers = rovers
-      @map    = map
+    def initialize(rovers:, map:, rover_instructions:)
+      @rovers             = rovers
+      @map                = map
+      @rover_instructions = rover_instructions
     end
 
-    def apply_instructions(rover:, command_list:)
-      command_list.each_char do |command|
-        apply_instruction(command, rover)
+    def apply_instructions
+      rover_instructions.each do |rover, commands|
+        commands.each_char do |command|
+          apply_instruction(command, rover)
+        end
       end
     end
 
