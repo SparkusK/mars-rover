@@ -7,6 +7,12 @@ module MarsRover
       @map    = map
     end
 
+    def apply_instructions(rover:, command_list:)
+      command_list.each_char do |command|
+        apply_instruction(command, rover)
+      end
+    end
+
     def can_move?(rover)
       return true unless there_is_another_rover?(rover) or it_will_fall_off?(rover)
 
@@ -22,6 +28,12 @@ module MarsRover
     end
 
     private
+
+    def apply_instruction(command, rover)
+      rover.rotate('l') if command == 'L'
+      rover.rotate('r') if command == 'R'
+      move(rover)       if command == 'M'
+    end
 
     def there_is_another_rover?(rover)
       rover.destination.tap do |p|

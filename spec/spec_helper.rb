@@ -6,6 +6,7 @@ require 'mars_rover/mars_rover'
 require 'mars_rover/map'
 require 'mars_rover/rovers_coordinator'
 require 'instruction'
+require 'instructions_parser'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
