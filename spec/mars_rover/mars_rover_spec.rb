@@ -36,14 +36,4 @@ RSpec.describe MarsRover::MarsRover do
       expect { rover.move_forward }.to_not change { rover.bearing }
     end
   end
-
-  # I'll probably move the below tests to the MarsRover::Map spec
-  context "when consulting a map" do
-    it 'moves forward when the square is empty' do
-      rover.can_move_forward?(map: MarsRover::Map.new(upper_right_corner: { x: 5, y: 5 }))
-    end
-
-    it 'does not move forward when the square is not on the grid'
-    it 'does not move forward if there is another rover on the square'
-  end
 end

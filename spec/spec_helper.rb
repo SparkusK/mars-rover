@@ -3,6 +3,7 @@
 require 'bundler/setup'
 require 'mars_rover'
 require 'mars_rover/mars_rover'
+require 'mars_rover/map'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
