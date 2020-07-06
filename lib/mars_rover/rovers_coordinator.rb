@@ -1,3 +1,5 @@
+require 'pry'
+
 module MarsRover
   class RoversCoordinator
     attr_accessor :rovers, :map, :rover_instructions

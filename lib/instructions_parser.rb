@@ -6,7 +6,7 @@ class InstructionsParser
     substrings = cleaned_substrings(input_string)
 
     rovers             = []
-    rover_instructions = Hash.new(0)
+    rover_instructions = {}
     chunked_rover_data_and_instructions(substrings).each do |rover_instruction_map|
       rover   = extract_rover(rover_instruction_map)
       rovers += [rover]
@@ -44,6 +44,6 @@ class InstructionsParser
   end
 
   def self.cleaned_substrings(input_string)
-    input_string.split("\n").reject(&:empty?).map(&:strip)
+    input_string.split("\n").map(&:strip).reject(&:empty?)
   end
 end
