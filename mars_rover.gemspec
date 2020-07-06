@@ -35,8 +35,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'faker'
-
   spec.add_development_dependency 'awesome_print',       '~> 1.8'
   spec.add_development_dependency 'pry',                 '~> 0.12.2'
   spec.add_development_dependency 'rubocop',             '~> 0.77'
