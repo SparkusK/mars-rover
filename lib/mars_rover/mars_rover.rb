@@ -38,6 +38,10 @@ module MarsRover
       end
     end
 
+    def formatted_position
+      "#{x} #{y} #{bearing}"
+    end
+
     private
 
     def default_position

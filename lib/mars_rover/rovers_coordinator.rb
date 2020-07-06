@@ -17,6 +17,10 @@ module MarsRover
       rover.move_forward if can_move?(rover)
     end
 
+    def rover_positions
+      rovers.map(&:formatted_position).join("\n")
+    end
+
     private
 
     def there_is_another_rover?(rover)

@@ -17,13 +17,20 @@ RSpec.describe MarsRover::RoversCoordinator do
     expect(coordinator.map).to eq(map)
   end
 
+  it 'retrieves a list of Rover positions' do
+    expect(coordinator.rover_positions).to eq(
+      "1 5 N\n" +
+      "1 6 E\n" +
+      "10 8 E"
+    )
+  end
+
   context 'when dealing with moving rovers' do
     let(:blocked_rover)      { rovers.first }
     let(:on_the_edge_rover)  { rovers.last }
     let(:unobstructed_rover) { rovers[1] }
 
     context 'when being asked if a rover can move' do
-
       it 'will report that a rover cannot move if there is another rover in the way' do
         expect(coordinator.can_move?(blocked_rover)).to be_falsey
       end
@@ -47,5 +54,4 @@ RSpec.describe MarsRover::RoversCoordinator do
       end
     end
   end
-
 end
