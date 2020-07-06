@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MarsRover
   class Map
     attr_accessor :width, :length
