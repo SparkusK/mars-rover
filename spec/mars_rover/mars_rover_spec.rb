@@ -11,6 +11,10 @@ RSpec.describe MarsRover::MarsRover do
     expect(rover.bearing).to eq('N')
   end
 
+  it 'has a destination' do
+    expect(rover.destination).to eq({ x: 1, y: 4 })
+  end
+
   context 'when rotating' do
     it 'can rotate left' do
       expect { rover.rotate('L') }.to change { rover.bearing }.from('N').to('W')

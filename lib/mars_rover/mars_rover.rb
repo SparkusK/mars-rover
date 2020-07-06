@@ -15,6 +15,19 @@ module MarsRover
       position[:y]
     end
 
+    def destination
+      case @bearing
+        when 'N' then { x: x,     y: y + 1 }
+        when 'E' then { x: x + 1, y: y     }
+        when 'S' then { x: x,     y: y - 1 }
+        when 'W' then { x: x - 1, y: y     }
+      end
+    end
+
+    def move_forward
+      @position = destination
+    end
+
     def rotate(direction)
       if left_aliases.include? direction.to_s.downcase
         rotate_left
@@ -22,16 +35,6 @@ module MarsRover
         rotate_right
       else
         raise ArgumentError.new("Incorrect direction specified. The correct inputs are: #{direction_aliases}")
-      end
-    end
-
-    def move_forward
-      @position =
-      case @bearing
-        when 'N' then { x: x,     y: y + 1 }
-        when 'E' then { x: x + 1, y: y     }
-        when 'S' then { x: x,     y: y - 1 }
-        when 'W' then { x: x - 1, y: y     } 
       end
     end
 
