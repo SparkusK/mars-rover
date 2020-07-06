@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'mars_rover'
 require 'mars_rover/mars_rover'
 require 'mars_rover/map'
 require 'mars_rover/rovers_coordinator'
